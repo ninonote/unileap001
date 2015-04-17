@@ -1,2 +1,2 @@
 # unileap
-* niconicoEvent2015
+* nEvent2015
