@@ -1,4 +1,6 @@
-﻿/******************************************************************************\
+﻿//#define OVERRIDE_MANTIS
+
+/******************************************************************************\
 * Copyright (C) Leap Motion, Inc. 2011-2014.                                   *
 * Leap Motion proprietary. Licensed under Apache 2.0                           *
 * Available at http://www.apache.org/licenses/LICENSE-2.0.html                 *
@@ -119,12 +121,9 @@ public class LeapImageRetriever : MonoBehaviour
 
   private LM_DEVICE GetDevice(int width)
   {
-    const bool OVERRIDE_MANTIS = false;
-    if (OVERRIDE_MANTIS)
-    {
+#if OVERRIDE_MANTIS
       return LM_DEVICE.MANTIS;
-    }
-
+#endif
     if (width == LMDevice.PERIPERAL_WIDTH)
     {
       return LM_DEVICE.PERIPHERAL;
@@ -241,8 +240,8 @@ public class LeapImageRetriever : MonoBehaviour
       dist_pixelsY_ = new Color32[width * height];
       DestroyImmediate(distortionX_);
       DestroyImmediate(distortionY_);
-      distortionX_ = new Texture2D(width, height, TextureFormat.RGBA32, false);
-      distortionY_ = new Texture2D(width, height, TextureFormat.RGBA32, false);
+      distortionX_ = new Texture2D(width, height, TextureFormat.RGBA32, false, true);
+      distortionY_ = new Texture2D(width, height, TextureFormat.RGBA32, false, true);
       distortionX_.wrapMode = TextureWrapMode.Clamp;
       distortionY_.wrapMode = TextureWrapMode.Clamp;
     }
@@ -440,7 +439,6 @@ public class LeapImageRetriever : MonoBehaviour
   }
 
   void OnApplicationFocus(bool focusStatus) {
-    bool paused = focusStatus;
     if (focusStatus) {
             // Ensure reinitialization in Update
             attached_device_.width = 0;

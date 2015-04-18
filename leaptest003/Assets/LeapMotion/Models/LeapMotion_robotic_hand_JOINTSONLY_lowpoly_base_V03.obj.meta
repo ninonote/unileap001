@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 77be2d34588f94f148029da0fc06afa0
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: group10_group7 polySurface230
     100002: group10_group7 polySurface231
@@ -298,13 +298,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 99
     splitTangentsAcrossUV: 1
@@ -327,5 +325,3 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
