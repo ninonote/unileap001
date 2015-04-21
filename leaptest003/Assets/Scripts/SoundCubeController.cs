@@ -68,8 +68,12 @@ public class SoundCubeController : MonoBehaviour {
 					"easeType", "linear"
 					//"space", Space.worldでグローバル座標系で移動
 				));
+				iTween.RotateTo(soundcube.soundcube, iTween.Hash(
+					"y", 0,
+					"time", 0.5
+				));
 			}
 		}
 	}
-	
+
 }
