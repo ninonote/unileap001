@@ -23,6 +23,12 @@ public class GrabbableCube : GrabbableObject {
 	protected bool grabbed_ = false;
 	protected bool hovered_ = false;
 
+	public GameObject label;
+
+	public void Start() {
+		label = this.gameObject.transform.Find ("Label").gameObject;
+	}
+
 	public bool IsHovered() {
 		return hovered_;
 	}
@@ -31,11 +37,11 @@ public class GrabbableCube : GrabbableObject {
 		return grabbed_;
 	}
 	
-	public virtual void OnStartHover() {
+	public override void OnStartHover() {
 		hovered_ = true;
 	}
 	
-	public virtual void OnStopHover() {
+	public override void OnStopHover() {
 		hovered_ = false;
 	}
 	
@@ -43,9 +49,9 @@ public class GrabbableCube : GrabbableObject {
 		grabbed_ = true;
 		hovered_ = false;
 		//Debug.Log ("Grabbed cube yo");
-		GameObject label = this.gameObject.transform.Find ("Label").gameObject;
-		iTween.FadeTo(label, iTween.Hash ("alpha", 1, "time", .5f));
-
+		if (label != null) {
+			iTween.FadeTo (label, iTween.Hash ("alpha", 1, "time", .5f));
+		}
 		if (breakableJoint != null) {
 			Joint breakJoint = breakableJoint.GetComponent<Joint>();
 			if (breakJoint != null) {
@@ -57,9 +63,10 @@ public class GrabbableCube : GrabbableObject {
 	
 	public override void OnRelease() {
 		grabbed_ = false;
-		GameObject label = this.gameObject.transform.Find ("Label").gameObject;
-		iTween.FadeTo(label, iTween.Hash ("alpha", 0, "time", .5f));
-		
+
+		if (label != null) {
+			iTween.FadeTo (label, iTween.Hash ("alpha", 0, "time", .5f));
+		}		
 		if (breakableJoint != null) {
 			Joint breakJoint = breakableJoint.GetComponent<Joint>();
 			if (breakJoint != null) {
