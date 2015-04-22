@@ -27,6 +27,8 @@ public class GrabbableCube : GrabbableObject {
 
 	public void Start() {
 		label = this.gameObject.transform.Find ("Label").gameObject;
+		var text = label.GetComponent<TextMesh> ().text;
+		Debug.Log (text);
 	}
 
 	public bool IsHovered() {
@@ -50,6 +52,7 @@ public class GrabbableCube : GrabbableObject {
 		hovered_ = false;
 		//Debug.Log ("Grabbed cube yo");
 		if (label != null) {
+			Debug.Log ("label fade in");
 			iTween.FadeTo (label, iTween.Hash ("alpha", 1, "time", .5f));
 		}
 		if (breakableJoint != null) {

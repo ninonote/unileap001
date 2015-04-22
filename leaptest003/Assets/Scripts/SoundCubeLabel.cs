@@ -7,7 +7,7 @@ public class SoundCubeLabel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		labelPosition = new Vector3 (20, 30, -25);
+		labelPosition = new Vector3 (20, 30, -35);
 		iTween.FadeTo(this.gameObject, iTween.Hash ("alpha", 0, "time", .5f));
 	}
 	
