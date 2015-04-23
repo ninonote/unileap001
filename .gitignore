@@ -1,0 +1,10 @@
+leaptest003/Temp/
+leaptest003/Library/
+leaptest003/Obj/
+
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.DS_store
