@@ -63,6 +63,9 @@ public class SoundCubeController : MonoBehaviour {
 			//Debug.Log (index);
 			Application.LoadLevel(nextScene);
 		}
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			returnCubes();
+		}
 	}
 
 	private void OnGUI () {
@@ -72,7 +75,8 @@ public class SoundCubeController : MonoBehaviour {
 		if (GUI.Button (rect, "RESET"))
 		{
 			Debug.Log ("Reset button pressed.");
-			foreach(var cube in cubes) {
+			returnCubes();
+			/*foreach(var cube in cubes) {
 				var soundcube = cube.GetComponent<SoundCube>();
 				Debug.Log (soundcube.startPosition);
 				Debug.Log (soundcube.soundcube.name);
@@ -89,7 +93,29 @@ public class SoundCubeController : MonoBehaviour {
 					"y", 0,
 					"time", 0.5
 				));
-			}
+			}*/
+		}
+	}
+
+	private void returnCubes () {
+		Debug.Log ("Reset button pressed.");
+		foreach (var cube in cubes) {
+			var soundcube = cube.GetComponent<SoundCube> ();
+			Debug.Log (soundcube.startPosition);
+			Debug.Log (soundcube.soundcube.name);
+			//soundcube.soundcube.transform.position = soundcube.startPosition;
+			iTween.MoveTo (soundcube.soundcube, iTween.Hash (
+				"position", soundcube.startPosition,
+				"time", 0.5, 
+				"oncomplete", "complete", 
+				"oncompletetarget", soundcube.soundcube, 
+				"easeType", "linear"
+				//"space", Space.worldでグローバル座標系で移動
+			));
+			iTween.RotateTo (soundcube.soundcube, iTween.Hash (
+				"y", 0,
+				"time", 0.5
+			));
 		}
 	}
 

@@ -68,7 +68,7 @@ public class GrabbableCube : GrabbableObject {
 		grabbed_ = false;
 
 		if (label != null) {
-			iTween.FadeTo (label, iTween.Hash ("alpha", 0, "time", .5f));
+			//iTween.FadeTo (label, iTween.Hash ("alpha", 0, "time", .5f));
 		}		
 		if (breakableJoint != null) {
 			Joint breakJoint = breakableJoint.GetComponent<Joint>();
