@@ -1,7 +1,8 @@
- $PROJDIR/Temp/
- $PROJDIR/Library/
- $PROJDIR/Obj/
- 
+ ./Temp/
+ ./Library/
+ ./Obj/
+ ./ProjectSettings/EditorSettings.asset 
+
  *.csproj
  *.unityproj
  *.sln
