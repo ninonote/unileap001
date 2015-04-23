@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 
 public class GrabbableCube : GrabbableObject {
-	
+/*	
 	public bool useAxisAlignment = false;
 	public Vector3 rightHandAxis;
 	public Vector3 objectAxis;
@@ -21,23 +21,25 @@ public class GrabbableCube : GrabbableObject {
 	public float breakTorque;
 	
 	protected bool grabbed_ = false;
-	protected bool hovered_ = false;
+	protected bool hovered_ = false;*/
 
 	public GameObject label;
 
 	public void Start() {
-		label = this.gameObject.transform.Find ("Label").gameObject;
-		var text = label.GetComponent<TextMesh> ().text;
-		Debug.Log (text);
+		if (this.gameObject.transform.Find ("Label") != null) {
+			label = this.gameObject.transform.Find ("Label").gameObject;
+			var text = label.GetComponent<TextMesh> ().text;
+			Debug.Log (text);
+		}
 	}
-
+	/*
 	public bool IsHovered() {
 		return hovered_;
 	}
 	
 	public bool IsGrabbed() {
 		return grabbed_;
-	}
+	}*/
 	
 	public override void OnStartHover() {
 		hovered_ = true;
@@ -68,7 +70,7 @@ public class GrabbableCube : GrabbableObject {
 		grabbed_ = false;
 
 		if (label != null) {
-			//iTween.FadeTo (label, iTween.Hash ("alpha", 0, "time", .5f));
+			iTween.FadeTo (label, iTween.Hash ("alpha", 0, "time", .5f));
 		}		
 		if (breakableJoint != null) {
 			Joint breakJoint = breakableJoint.GetComponent<Joint>();

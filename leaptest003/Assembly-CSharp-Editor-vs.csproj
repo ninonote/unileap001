@@ -138,6 +138,7 @@
      <None Include="Assets\LeapMotion\Resources\LeapRGBUndistorted.shader" />
      <None Include="Assets\ImageEffects\Shaders\EdgeDetectNormals.shader" />
      <None Include="Assets\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
+     <None Include="Assets\Shaders\SimpleShader.shader" />
      <None Include="Assets\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
      <None Include="Assets\ImageEffects\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Plugins\SystemWipeRecognizerDll.bundle\Contents\MacOS\version.txt" />
