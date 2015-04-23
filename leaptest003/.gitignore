@@ -1,7 +1,6 @@
  ./Temp/
  ./Library/
  ./Obj/
- ./ProjectSettings/EditorSettings.asset 
 
  *.csproj
  *.unityproj
