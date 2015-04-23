@@ -21,6 +21,7 @@ public class SoundCubeController : MonoBehaviour {
 	private Texture texture = null;
 
 	private GUIStyle style;
+	public GUISkin skin;
 
 	void Awake() {
 		var tag = "SoundCube";
@@ -74,15 +75,26 @@ public class SoundCubeController : MonoBehaviour {
 	private void OnGUI () {
 		//var rect = new Rect (10, 10, 100, 30);
 		//GUI.Label (rect, content, style);
-		var rect = new Rect (10, 10, 256, 32);
-		//GUI.Label (rect, content, style);
 
-		//rect.y = 40;
-		if (GUI.Button (rect, texture))
+		var rect = new Rect (64, 64, 512, 64);
+
+		//var rect = new Rect (10, 10, 256, 32);
+
+	
+		GUI.skin = skin;
+		GUI.Label (rect, texture);
+
+
+		//GUI.Label (rect, content, style);
+		/*
+		rect.width = 256;
+		rect.height = 256;
+		rect.x = Screen.width - 256;
+		if (GUI.Button (rect, content.image))
 		{
 			Debug.Log ("Reset button pressed.");
 			returnCubes();
-		}
+		}*/
 	}
 
 	private void returnCubes () {
