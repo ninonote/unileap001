@@ -17,7 +17,11 @@ public class SoundCubeController : MonoBehaviour {
 	[SerializeField]
 	public GUIContent content;
 
+	[SerializeField]
+	private Texture texture = null;
+
 	private GUIStyle style;
+	public GUISkin skin;
 
 	void Awake() {
 		var tag = "SoundCube";
@@ -48,7 +52,7 @@ public class SoundCubeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Return)) {
 			Debug.Log ("space key was pressed");
 			string currentScene = Application.loadedLevelName;
 			//var word = scene.Where(currentScene => currentScene.IsKey).First();
@@ -63,38 +67,34 @@ public class SoundCubeController : MonoBehaviour {
 			//Debug.Log (index);
 			Application.LoadLevel(nextScene);
 		}
-		if (Input.GetKeyDown (KeyCode.Return)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			returnCubes();
 		}
 	}
 
 	private void OnGUI () {
-		var rect = new Rect (10, 10, 100, 30);
-		GUI.Label (rect, content, style);
-		rect.y = 40;
-		if (GUI.Button (rect, "RESET"))
+		//var rect = new Rect (10, 10, 100, 30);
+		//GUI.Label (rect, content, style);
+
+		var rect = new Rect (64, 64, 512, 64);
+
+		//var rect = new Rect (10, 10, 256, 32);
+
+	
+		GUI.skin = skin;
+		GUI.Label (rect, texture);
+
+
+		//GUI.Label (rect, content, style);
+		/*
+		rect.width = 256;
+		rect.height = 256;
+		rect.x = Screen.width - 256;
+		if (GUI.Button (rect, content.image))
 		{
 			Debug.Log ("Reset button pressed.");
 			returnCubes();
-			/*foreach(var cube in cubes) {
-				var soundcube = cube.GetComponent<SoundCube>();
-				Debug.Log (soundcube.startPosition);
-				Debug.Log (soundcube.soundcube.name);
-				//soundcube.soundcube.transform.position = soundcube.startPosition;
-				iTween.MoveTo(soundcube.soundcube, iTween.Hash(
-					"position", soundcube.startPosition,
-					"time", 0.5, 
-					"oncomplete", "complete", 
-					"oncompletetarget", soundcube.soundcube, 
-					"easeType", "linear"
-					//"space", Space.worldでグローバル座標系で移動
-				));
-				iTween.RotateTo(soundcube.soundcube, iTween.Hash(
-					"y", 0,
-					"time", 0.5
-				));
-			}*/
-		}
+		}*/
 	}
 
 	private void returnCubes () {
